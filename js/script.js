@@ -13,17 +13,61 @@ function documentAction(e) {
         if (!currentElement.nextElementSibling.classList.contains('--sliding')) {
             currentElement.classList.toggle('active')
         }
-        // currentElement.nextElementSibling.hidden = !currentElement.nextElementSibling.hidden
         slideToggle(currentElement.nextElementSibling)
-
+        // currentElement.nextElementSibling.hidden = !currentElement.nextElementSibling.hidden
         // if (currentElement.nextElementSibling.hidden === true) {
         //     currentElement.nextElementSibling.hidden === false 
         // } else {
         //     currentElement.nextElementSibling.hidden === true
         // }
     }
+    if (targetElement.closest('.rating__input')) {
+        const currentElement = targetElement.closest('.rating__input')
+        const rating = currentElement.closest('.rating')
+        if (rating.classList.contains('rating--set')) {
+            starRatingGet(rating, currentElement)
+        }
+    }
 }
 
+// Rating
+
+const ratings = document.querySelectorAll('[data-rating]')
+if (ratings) {
+    ratings.forEach(rating => {
+        const currentValue = +rating.dataset.rating
+        currentValue ? starRatingSet(rating, currentValue) : null
+    })
+}
+
+function starRatingGet(rating, currentElement) {
+    const ratingValue = +currentElement.value
+    // console.log(ratingValue);
+    // тут відправка оцінки (ratingValue) на бекенд...
+    // Уявімо, що ми отримали середню оцінку 3.2
+    const resultRating = 3.2
+    starRatingSet(rating, resultRating)
+}
+
+function starRatingSet(rating, value) {
+    const ratingItems = rating.querySelectorAll('.rating__item')
+    const resultFullItems = parseInt(value)
+    const resultPartItem = value - resultFullItems
+
+     ratingItems.forEach((ratingItem, index) => {
+        ratingItem.classList.remove('active')
+        ratingItem.querySelector('span') ? ratingItems[index].querySelector('span').remove() : null
+
+        if (index <= (resultFullItems - 1)) {
+            ratingItem.classList.add('active')
+        }
+        if (index === resultFullItems && resultPartItem) {
+            ratingItem.insertAdjacentHTML("beforeend", `<span style="width:${resultPartItem * 100}%"></span>`)
+        }
+    })
+}
+
+// Spollers
 const spollers = document.querySelectorAll('[data-spoller]') 
 
 if (spollers.length) {
