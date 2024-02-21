@@ -1,0 +1,212 @@
+// Заголовки
+.title {
+	@extend %CS;
+	font-weight: 600;
+	color: $darkColor;
+	letter-spacing: toRem(.68);
+	@include adaptiveValue("font-size", 36, 24);
+	line-height: 1.1;
+	display: flex;
+	align-items: flex-start;
+	gap: toEm(20, 36);
+	&::before {
+		content: '';
+		background-color: $purplColor;
+		border-radius: toRem(10);
+		flex: 0 0 toRem(6);
+		// margin-top: toRem(5);
+		width: toRem(6);
+		height: toEm(30, 36);
+	}
+	// .title--margin
+	&--margin {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 70, 30);
+		}
+	}
+}
+// Product Prewiew Cart
+.item-product {
+	position: relative;
+	display: grid;
+	gap: toRem(30);
+	&--category {
+		gap: toRem(25);
+	}
+	// .item-product_picture-link
+	&__picture-link {
+		display: block;
+	}
+	// .item-product__image
+	&__image {
+		aspect-ratio: 282 / 370;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: toRem(10);
+		.item-product--category & {
+			aspect-ratio: 270 / 393;
+		}
+	}
+	// .item-product__body
+	&__body {
+		display: grid;
+		grid-template: auto auto / 1fr auto;
+		row-gap: toRem(5);
+		column-gap: toRem(35);
+	}
+	// .item-product__title
+	&__title {
+		font-weight: 600;
+		color: $darkColor;
+
+		min-width: 0;
+
+		.item-product--category & {
+			font-size: toRem(17);
+			font-weight: 700;
+		}
+	}
+	// .item-product__link-title
+	&__link-title {
+
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		display: block;
+
+		text-decoration-color: transparent;
+		transition: all .3s ease-in-out;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+				text-decoration-color: $darkColor;
+			}
+		}
+	}
+	// .item-product__label
+	&__label {
+		grid-row: 2 / 3;
+		font-size: toRem(14);
+		font-weight: 500;
+	}
+	&__link,
+	&__price {
+		// align-self: center;
+		grid-column: 2 / 3;
+		grid-row: span 2;
+	}
+	// .item-product__link
+	&__link {
+		display: flex;
+		align-items: center;
+		&::before {
+			transition: all .3s ease-in-out;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+	// .item-product__price
+	&__price {
+		align-self: center; // ?
+		border-radius: toRem(8);
+		background-color: $liteColor;
+		padding: toRem(10) toRem(20);
+		font-weight: 700;
+		font-size: toRem(14);
+		color: $darkColor;
+	}
+	// .item-product__favorite
+	&__favorite {
+		position: absolute;
+		top: toRem(26);
+		right: toRem(20);
+		width: toRem(32);
+		height: toRem(32);
+		border-radius: 50%;
+		background-color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&::before {
+			transition: all .3s ease-in-out;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: red;
+			}
+		}
+	}
+}
+// Button
+.button {
+	font-family: "Causten";
+	background-color: $purplColor;
+	padding: toRem(16) toRem(20);
+	font-size: toRem(18);
+	font-weight: 500;
+	color: #fff;
+	line-height: 1.2222222;
+	text-align: center;
+	border-radius: toRem(8);
+	transition: all .3s ease-in-out;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #6620C1;
+			box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
+		}
+		&:focus {
+			background-color: #6620C1;
+		}
+		&:disabled {
+			background-color: #EAEAEA;
+			color: $mainColor;
+			cursor: default;
+		}
+	}
+	&--border {
+		color: $darkColor;
+		background-color: #fff;
+		border: toRem(1) solid #BEBCBD;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $purplColor;
+				background-color: #fff;
+				box-shadow: none;
+			}
+		}
+		&:focus {
+			color: $purplColor;
+			background-color: #fff;
+			border: toRem(1) solid #6620C1;
+		}
+		&:disabled {
+			background-color: #EAEAEA;
+			color: $mainColor;
+			cursor: default;
+		}
+	}
+	&--white {
+		color: $darkColor;
+		background-color: #fff;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #fff;
+				background-color: $purplColor;
+			}
+		}
+		&:focus {
+			color: #fff;
+			background-color: $purplColor;
+			box-shadow: none;
+		}
+		&:disabled {
+			background-color: #EAEAEA;
+			color: $mainColor;
+			cursor: default;
+		}
+	}
+}
