@@ -28,12 +28,15 @@ $liteColor: #f6f6f6;
 @import "_reset.scss";
 // Компоненти
 @import "_common.scss";
-// Шапка
 @import "_header.scss";
-// Підвал (Футер)
 @import "_footer.scss";
-// Сторінки
 @import "_home.scss";
+@import "_nouislider.scss";
+// Filter
+@import "_filter.scss";
+// Сторінки
+@import "_catalog.scss";
+
 
 body {
     font-family: "Causten";
@@ -98,4 +101,6 @@ body {
     &__reviews {
         @include adaptiveValue("margin-bottom", 100, 40);
     }
+    // .page__catalog
+    &__catalog {}
 }

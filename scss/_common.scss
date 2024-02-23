@@ -134,6 +134,9 @@
 		&::before {
 			transition: all .3s ease-in-out;
 		}
+		&--active {
+			color: red;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: red;

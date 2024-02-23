@@ -1,0 +1,112 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/01.jpeg",
+            "title": "Black Sweatshirt with Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "Jhanvi’s Brand",
+            "price": "$123.00"
+        },
+        {
+            "id": 2,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/for-women/04.jpeg",
+            "title": "White T-shirt",
+            "label": "Helen’s  Brand",
+            "price": "$11.00"
+        },
+        {
+            "id": 3,
+            "favorite": false,
+            "url": "product.html",
+            "image": "img/products/04.jpeg",
+            "title": "Levender Hoodie with Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "Nike’s Brand",
+            "price": "$119.00"
+        },
+        {
+            "id": 4,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/05.jpeg",
+            "title": "Levender Hoodie with Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "paypal’s  Brand",
+            "price": "$77.00"
+        },
+        {
+            "id": 5,
+            "favorite": false,
+            "url": "product.html",
+            "image": "img/products/06.jpeg",
+            "title": "White Graphic Crop Top",
+            "label": "woden’s  Brand",
+            "price": "$29.00"
+        },
+        {
+            "id": 6,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/03.jpeg",
+            "title": "Black Shorts",
+            "label": " MM’s Brand",
+            "price": "$37.00"
+        },
+        {
+            "id": 7,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/07.jpeg",
+            "title": "Barboreal Gray Sweats Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "Priya’s  Brand",
+            "price": "$77.00"
+        },
+        {
+            "id": 8,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/08.jpeg",
+            "title": "Yellow Sweatshirt",
+            "label": "woden’s  Brand",
+            "price": "$29.00"
+        },
+        {
+            "id": 9,
+            "favorite": false,
+            "url": "product.html",
+            "image": "img/products/09.jpeg",
+            "title": "Flower Pattern Black lorem, ipsum dolor sit amet",
+            "label": " MM’s Brand",
+            "price": "$37.00"
+        },
+        {
+            "id": 10,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/products/10.jpeg",
+            "title": "I Don’t Graphic T-shirt  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "Nisargi’s  Brand",
+            "price": "$77.00"
+        },
+        {
+            "id": 11,
+            "favorite": true,
+            "url": "product.html",
+            "image": "img/for-women/03.jpeg",
+            "title": "Blue Flower Print Crop Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "Mellon’s  Brand",
+            "price": "$29.00"
+        },
+        {
+            "id": 12,
+            "favorite": false,
+            "url": "product.html",
+            "image": "img/products/02.jpeg",
+            "title": "line Pattern Black Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque",
+            "label": "AS’s Brand",
+            "price": "$37.00"
+        }
+    ]
+}
