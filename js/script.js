@@ -28,6 +28,11 @@ function documentAction(e) {
             starRatingGet(rating, currentElement)
         }
     }
+    // Tabs 
+    if (targetElement.closest('[data-tabs-button]')) {
+        const currentElement = targetElement.closest('[data-tabs-button]') 
+        setTab(currentElement)
+    }
 }
 
 // Rating
@@ -416,4 +421,24 @@ function initProducts(data) {
         catalogItems.innerHTML = productTemplate
         
     }
+}
+
+// Tabs 
+function setTab(tabElement) {
+    const tabsParent = tabElement.closest('[data-tabs]')
+
+    const tabsButtons = Array.from(tabsParent.querySelectorAll('[data-tabs-button]'))
+    const tabsActiveButton = tabsParent.querySelector('[data-tabs-button].active')
+    tabsActiveButton.classList.remove('active')
+    tabElement.classList.add('active')
+
+    const currentButtonIndex = tabsButtons.indexOf(tabElement) 
+
+    const tabsElemens = tabsParent.querySelectorAll('[data-tabs-element]')
+
+    tabsElemens.forEach(tabsElemen => {
+        tabsElemen.hidden = true
+    })
+
+    tabsElemens[currentButtonIndex].hidden = false
 }

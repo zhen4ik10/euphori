@@ -215,7 +215,9 @@
 }
 // Rating
 .rating {
-	display: inline-block;
+	display: inline-flex;
+	gap: toRem(15);
+	align-items: center;
 	// .rating__items
 	&__items {
 		display: inline-flex;
@@ -287,4 +289,102 @@
 			cursor: pointer;
 		}
 	}
+	// .rating__value
+	&__value {
+		font-size: toRem(18);
+		align-self: center;
+		font-weight: 500;
+	}
+}
+// Breadcrumbs
+.breadcrumbs {
+	display: flex;
+	font-size: toRem(18);
+	font-weight: 500;
+	gap: toRem(15);
+	flex-wrap: wrap;
+	line-height: 1.22;
+	// .breadcrumbs__item
+	&__item {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: toRem(15);
+		&::before {
+			font-size: toRem(10);
+		}
+	}
+	// .breadcrumbs__link
+	&__link {
+		transition: all .3s;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	// .breadcrumbs__current
+	&__current {}
+}
+// Tabs
+.tabs {
+	// .tabs__navigation
+	&__navigation {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: toRem(30);
+		row-gap: toRem(15);
+		align-items: flex-start;
+	}
+	// .tabs__item
+	&__item {}
+	// .tabs__button
+	&__button {
+		font-size: toRem(18);
+		display: flex;
+		align-items: center;
+		gap: toRem(15);
+		line-height: 120%;
+		position: relative;
+		padding-bottom: toRem(18);
+		transition: all 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $darkColor;
+			}
+		}
+		.active & {
+			color: $darkColor;
+			font-weight: 500;
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 50%;
+				height: toRem(1);
+				background-color: $darkColor;
+			}
+		}
+	}
+	// .tabs__comment-info
+	&__comment-info {
+		background: $purplColor;
+		color: #fff;
+		padding: toRem(4) toRem(6);
+		border-radius: toRem(8);
+		line-height: 1;
+		font-size: toRem(10);
+	}
+	// .tabs__faq-info
+	&__faq-info {
+		@extend .tabs__comment-info;
+		background-color: $darkColor;
+	}
+	// .tabs__body
+	&__body {
+		padding-top: toRem(30);
+	}
+	// .tabs__element
+	&__element {}
 }

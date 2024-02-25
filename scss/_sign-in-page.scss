@@ -1,0 +1,41 @@
+.sign-in {
+    position: relative;
+    max-width: toRem(1440);
+    margin: 0 auto;
+    // .sign-in__container
+    &__container {
+        display: grid;
+        min-height: toRem(500);
+        grid-template-columns: repeat(2, 1fr);
+        &::before {
+            content: '';
+
+        }
+    }
+    // .sign-in__image
+    &__image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+    // .sign-in__body
+    &__body {
+        padding-left: toRem(50);
+        padding-top: toRem(60);
+        padding-bottom: toRem(60);
+    }
+    // .sign-in__title
+    &__title {
+        @extend %CS;
+        color: $darkColor;
+        @include adaptiveValue("font-size", 34, 28);
+        font-weight: 700;
+        &:not(:last-child) {
+            margin-bottom: toRem(30);
+        }
+    }
+}
