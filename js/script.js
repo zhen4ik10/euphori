@@ -74,6 +74,32 @@ if (spollers.length) {
     spollers.forEach(spoller => {
         spoller.dataset.spoller !== "open" ? spoller.nextElementSibling.hidden = true : spoller.classList.add('active')
     })
+    // Filter
+    const filterTitle = document.querySelector('.filter__title');
+    if (filterTitle) {
+        // window.addEventListener("resize", someFunc)
+        const breakPointValue = filterTitle.dataset.spollerMedia //`(max-width: 991.98px)`
+        const breakPoint = breakPointValue ? `(${breakPointValue.split(',')[0]}-width:${breakPointValue.split(',')[1]}px)` : null
+        if (breakPoint) {
+
+            // !!!!!!
+            const matchMedia = window.matchMedia(breakPoint)
+            matchMedia.addEventListener("change", (e) => {
+                const isTrue = e.matches
+                if (isTrue) {
+                    slideUp(filterTitle.nextElementSibling)
+                    filterTitle.classList.remove('active')
+                } else {
+                    slideDown(filterTitle.nextElementSibling)
+                    filterTitle.classList.add('active')
+                }
+                // isTrue ? slideUp(filterTitle) : slideDown(filterTitle)
+                // isTrue ? filterTitle.classList.remove('active') : filterTitle.classList.add('active')
+            })
+            // !!!!!!!!
+        }
+    }
+
 }
 
 let slideDown = (target, duration = 500) => {
@@ -164,7 +190,7 @@ if (heroSlider) {
         parallax: true,
         // If we need pagination
         pagination: {
-            el: '.hero_pagination',
+            el: '.hero__pagination',
             clickable: true,
       },
       // Navigation arrows
@@ -245,6 +271,66 @@ if (reviewsSlider) {
     });
 }
 
+const mainProduct = document.querySelector('.main-product');
+if (mainProduct) {
+    const mainProductSliderImages = document.querySelectorAll('.main-product__slider img');
+    let mainProductThumbSlider
+
+    if (mainProductSliderImages.length) {
+        const productImagesBlock = document.querySelector('.main-product__images')
+        let mainProductThumbSliderTemplate = `<div class="main-product__thumb-slider thumb-slider">`
+        mainProductThumbSliderTemplate += `<div class="thumb-slider__slider swiper">`
+        mainProductThumbSliderTemplate += `<div class="thumb-slider__wrapper swiper-wrapper">`
+        mainProductSliderImages.forEach(mainProductSliderImage => {
+            const srcImage = mainProductSliderImage.getAttribute('src').replace('/slider/', '/slider/thumb/')
+            mainProductThumbSliderTemplate += `<div class="thumb-slider__slide swiper-slide">
+                <img src="${srcImage}" class="thumb-slider__image" alt="thumb-slider-01">
+            </div>`
+        })
+        mainProductThumbSliderTemplate += `</div>`
+        mainProductThumbSliderTemplate += `</div>`
+        mainProductThumbSliderTemplate += `<div class="thumb-slider__arrows">`
+        mainProductThumbSliderTemplate += `
+            <button type="button" class="thumb-slider__arrow thumb-slider__arrow--up _icon-ch-up"></button>
+            <button type="button" class="thumb-slider__arrow thumb-slider__arrow--down _icon-ch-down"></button>
+        `
+        mainProductThumbSliderTemplate += `</div>`
+        mainProductThumbSliderTemplate += `</div>`
+
+
+        productImagesBlock.insertAdjacentHTML("afterbegin", mainProductThumbSliderTemplate)
+
+        mainProductThumbSlider =  new Swiper('.thumb-slider__slider', {
+            // Optional parameters
+            loop: true,
+            direction: 'vertical',
+            speed: 800,
+            spaceBetween: 20,
+            slidesPerView: 3,
+            
+        })
+    }
+
+    const mainProductSlider =  new Swiper('.main-product__slider', {
+      // Optional parameters
+        loop: true,
+        speed: 800,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        // Navigation arrows
+        navigation: {
+            nextEl: '.thumb-slider__arrow--down',
+            prevEl: '.thumb-slider__arrow--up',
+        },
+        keyboard: {
+			enabled: true,
+		},
+        thumbs: {
+			swiper: mainProductThumbSlider
+		},
+    })
+}
+
 // -----
 // Filter
 // -----
@@ -321,7 +407,7 @@ function initProducts(data) {
                 productTemplate += `<div class="item-product__label">${productItem.label}</div>`
             }
             if (productItem.price) {
-                productTemplate += ` <div class="item-product__price">${productItem.price}}</div>`
+                productTemplate += ` <div class="item-product__price">${productItem.price}</div>`
             }
             productTemplate += `</div>`
             productTemplate += `</article>`

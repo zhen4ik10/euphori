@@ -36,6 +36,7 @@ $liteColor: #f6f6f6;
 @import "_filter.scss";
 // Сторінки
 @import "_catalog.scss";
+@import "_product.scss";
 
 
 body {
@@ -103,4 +104,6 @@ body {
     }
     // .page__catalog
     &__catalog {}
+    // .page__product
+    &__product {}
 }

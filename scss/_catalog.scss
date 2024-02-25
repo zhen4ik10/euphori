@@ -1,17 +1,28 @@
 .catalog {
+    // .catalog__main
+    &__main {
+        @include adaptiveValue("margin-bottom", 100, 40);
+    }
     // .catalog__container
     &__container {
         display: flex;
         align-items: flex-start;
+        @media (max-width: toEm(991.98)) {
+            display: block;
+        }
     }
-    // .catalog__filtergit
+    // .catalog__filter
     &__filter {
         flex: 0 0 toRem(295);
+
     }
     // .catalog__body
     &__body {
         flex: 1 1 auto;
-        @include adaptiveValue("padding", 50, 20);
+        @include adaptiveValue("padding-left", 50, 20, 2, $containerWidth, 991.98);
+        @include adaptiveValue("padding-right", 50, 20, 2, $containerWidth, 991.98);
+        @include adaptiveValue("padding-top", 50, 30);
+        @include adaptiveValue("padding-bottom", 50, 30);
     }
     // .catalog__header
     &__header {
@@ -38,6 +49,14 @@
         @include adaptiveValue("row-gap", 50, 24);
         grid-template-columns: repeat(auto-fill, minmax(toRem(250), 1fr));
     }
+    // .catalog__description
+    &__description {
+        @include adaptiveValue("margin-bottom", 100, 40);
+    }
+    // .catalog__best-price
+    &__best-price {
+        @include adaptiveValue("margin-bottom", 100, 40);
+    }
 }
 .type-catalog {
     display: flex;
@@ -60,4 +79,138 @@
         }
     }
 
+}
+.description-catalog {
+    // .description-catalog__container
+    &__container {}
+    // .description-catalog__title
+    &__title {
+        @include adaptiveValue("margin-bottom", 30, 20);
+    }
+    // .description-catalog__body
+    &__body {
+        color: $mainColor;
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 25, 15);
+        }
+        h3 {
+            @extend %CS;
+            font-weight: 700;
+            @include adaptiveValue("font-size", 20, 16);
+            line-height: 1.67;
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 25, 15);
+            }
+        }
+        p {
+            @include adaptiveValue("font-size", 20, 16);
+            line-height: 1.67;
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 20, 10);
+            }
+        }
+        strong {
+            font-weight: 700;
+        }
+        a {
+            text-decoration: underline;
+            @media (any-hover: hover) {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    // .description-catalog__see-more
+    &__see-more {
+        display: inline-block;
+        font-weight: 700;
+        @include adaptiveValue("font-size", 20, 16);
+        line-height: 1.67;
+        transition: all .3s ease-in-out;
+        @media (any-hover: hover) {
+            &:hover {
+                color: $purplColor;
+            }
+        }
+    }
+}
+.best-price {
+    // .best-price__container
+    &__container {}
+    // .best-price__title
+    &__title {
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 70, 20);
+        }
+    }
+    // .best-price__table
+    &__table {
+
+        // адаптив для таблиці, якщо буде більше колонок
+        // @media (max-width: toEm(600)) {
+        //     overflow: auto;
+        // }
+        @media (max-width: toEm(767.98)) {
+            margin: 0 toRem(-15);
+            border-radius: none;
+        }
+    }
+}
+.title {}
+.table-best-price {
+    background-color: #F6F6F6;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: toRem(12);
+    overflow: hidden;
+    @media (max-width: toEm(767.98)) {
+        border-radius: 0;
+    }
+
+    // адаптив для таблиці, якщо буде більше колонок
+    // min-width: toRem(600);
+
+    tr {
+        &:nth-child(2) {
+            td {
+                @include adaptiveValue("padding-top", 50, 15);
+            }
+        }
+        &:last-child {
+            td {
+                @include adaptiveValue("padding-bottom", 50, 15);
+            }
+        }
+    }
+    th {
+        @extend %CS;
+        font-weight: 700;
+        color: $darkColor;
+        line-height: 1.4;
+        @include adaptiveValue("font-size", 24, 16);
+        @include adaptiveValue("padding-top", 50, 15);
+        @include adaptiveValue("padding-bottom", 50, 15);
+        @include adaptiveValue("padding-left", 70, 15);
+        @include adaptiveValue("padding-right", 70, 15);
+        text-align: left;
+        border-bottom: toRem(1) solid rgba(190, 188, 189, .4);
+        &:not(:last-child) {
+            border-right: toRem(1) solid rgba(190, 188, 189, .4);
+        }
+        &:first-child {
+            width: 78%;
+        }
+    }
+    td {
+        line-height: 1.2;
+        @include adaptiveValue("font-size", 24, 16);
+        @include adaptiveValue("padding-left", 70, 15);
+        @include adaptiveValue("padding-right", 70, 15);
+        @include adaptiveValue("padding-top", 25, 7.5);
+        @include adaptiveValue("padding-bottom", 25, 7.5);
+        &:not(:last-child) {
+            border-right: toRem(1) solid rgba(190, 188, 189, .4);
+        }
+    }
 }

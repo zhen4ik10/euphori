@@ -1,5 +1,8 @@
 .filter {
     border-right: toRem(1) solid #bebcbc;
+    @media (max-width: toEm(991.98)) {
+        border-left: toRem(1) solid #bebcbc;
+    }
     // .filter__header
     &__header {}
     // .filter__title

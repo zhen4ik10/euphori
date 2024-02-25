@@ -1,7 +1,7 @@
 .hero {
     position: relative;
     // .hero_pagination
-    &_pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    &__pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
         position: absolute;
         @include adaptiveValue("bottom", 50, 40);
         left: 0;
